@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.btnCheckFileList = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFileList = new System.Windows.Forms.TextBox();
@@ -48,12 +49,19 @@
             this.txtAppBasePath = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.linkLabelViewFile = new System.Windows.Forms.LinkLabel();
+            this.btnFormatFileList = new System.Windows.Forms.Button();
+            this.txtZipDirName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.linkLabelTeacher = new System.Windows.Forms.LinkLabel();
+            this.linkLabelStudent = new System.Windows.Forms.LinkLabel();
+            this.btnMake = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCheckFileList
             // 
-            this.btnCheckFileList.Location = new System.Drawing.Point(14, 197);
+            this.btnCheckFileList.Location = new System.Drawing.Point(12, 237);
             this.btnCheckFileList.Name = "btnCheckFileList";
             this.btnCheckFileList.Size = new System.Drawing.Size(115, 23);
             this.btnCheckFileList.TabIndex = 0;
@@ -79,7 +87,7 @@
             // 
             // btnRelease
             // 
-            this.btnRelease.Location = new System.Drawing.Point(137, 197);
+            this.btnRelease.Location = new System.Drawing.Point(12, 266);
             this.btnRelease.Name = "btnRelease";
             this.btnRelease.Size = new System.Drawing.Size(115, 23);
             this.btnRelease.TabIndex = 3;
@@ -91,7 +99,7 @@
             // 
             this.txtReleaseFileName.Location = new System.Drawing.Point(12, 166);
             this.txtReleaseFileName.Name = "txtReleaseFileName";
-            this.txtReleaseFileName.Size = new System.Drawing.Size(389, 21);
+            this.txtReleaseFileName.Size = new System.Drawing.Size(326, 21);
             this.txtReleaseFileName.TabIndex = 5;
             // 
             // label2
@@ -105,21 +113,21 @@
             // 
             // numericUpDownVer
             // 
-            this.numericUpDownVer.Location = new System.Drawing.Point(409, 166);
+            this.numericUpDownVer.Location = new System.Drawing.Point(344, 166);
             this.numericUpDownVer.Maximum = new decimal(new int[] {
             999,
             0,
             0,
             0});
             this.numericUpDownVer.Name = "numericUpDownVer";
-            this.numericUpDownVer.Size = new System.Drawing.Size(59, 21);
+            this.numericUpDownVer.Size = new System.Drawing.Size(57, 21);
             this.numericUpDownVer.TabIndex = 6;
             this.numericUpDownVer.ValueChanged += new System.EventHandler(this.numericUpDownVer_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(409, 151);
+            this.label3.Location = new System.Drawing.Point(344, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 7;
@@ -223,11 +231,88 @@
             this.button1.Text = "选择...";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // linkLabelViewFile
+            // 
+            this.linkLabelViewFile.AutoSize = true;
+            this.linkLabelViewFile.Location = new System.Drawing.Point(372, 13);
+            this.linkLabelViewFile.Name = "linkLabelViewFile";
+            this.linkLabelViewFile.Size = new System.Drawing.Size(29, 12);
+            this.linkLabelViewFile.TabIndex = 19;
+            this.linkLabelViewFile.TabStop = true;
+            this.linkLabelViewFile.Text = "查看";
+            this.linkLabelViewFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelViewFile_LinkClicked);
+            // 
+            // btnFormatFileList
+            // 
+            this.btnFormatFileList.Location = new System.Drawing.Point(133, 237);
+            this.btnFormatFileList.Name = "btnFormatFileList";
+            this.btnFormatFileList.Size = new System.Drawing.Size(335, 23);
+            this.btnFormatFileList.TabIndex = 20;
+            this.btnFormatFileList.Text = "格式化文件清单内文件路径转为相对路径";
+            this.btnFormatFileList.UseVisualStyleBackColor = true;
+            this.btnFormatFileList.Click += new System.EventHandler(this.btnFormatFileList_Click);
+            // 
+            // txtZipDirName
+            // 
+            this.txtZipDirName.Location = new System.Drawing.Point(12, 210);
+            this.txtZipDirName.Name = "txtZipDirName";
+            this.txtZipDirName.Size = new System.Drawing.Size(456, 21);
+            this.txtZipDirName.TabIndex = 22;
+            this.txtZipDirName.Text = "Teacher";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 195);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "压缩包文件夹名";
+            // 
+            // linkLabelTeacher
+            // 
+            this.linkLabelTeacher.AutoSize = true;
+            this.linkLabelTeacher.Location = new System.Drawing.Point(419, 195);
+            this.linkLabelTeacher.Name = "linkLabelTeacher";
+            this.linkLabelTeacher.Size = new System.Drawing.Size(47, 12);
+            this.linkLabelTeacher.TabIndex = 24;
+            this.linkLabelTeacher.TabStop = true;
+            this.linkLabelTeacher.Text = "Teacher";
+            this.linkLabelTeacher.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelTeacher_LinkClicked);
+            // 
+            // linkLabelStudent
+            // 
+            this.linkLabelStudent.AutoSize = true;
+            this.linkLabelStudent.Location = new System.Drawing.Point(364, 195);
+            this.linkLabelStudent.Name = "linkLabelStudent";
+            this.linkLabelStudent.Size = new System.Drawing.Size(47, 12);
+            this.linkLabelStudent.TabIndex = 23;
+            this.linkLabelStudent.TabStop = true;
+            this.linkLabelStudent.Text = "Student";
+            this.linkLabelStudent.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelStudent_LinkClicked);
+            // 
+            // btnMake
+            // 
+            this.btnMake.Location = new System.Drawing.Point(407, 163);
+            this.btnMake.Name = "btnMake";
+            this.btnMake.Size = new System.Drawing.Size(59, 23);
+            this.btnMake.TabIndex = 25;
+            this.btnMake.Text = "生成";
+            this.btnMake.UseVisualStyleBackColor = true;
+            this.btnMake.Click += new System.EventHandler(this.btnMake_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 235);
+            this.ClientSize = new System.Drawing.Size(523, 300);
+            this.Controls.Add(this.btnMake);
+            this.Controls.Add(this.linkLabelTeacher);
+            this.Controls.Add(this.linkLabelStudent);
+            this.Controls.Add(this.txtZipDirName);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnFormatFileList);
+            this.Controls.Add(this.linkLabelViewFile);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabelGotoCurrentPath);
             this.Controls.Add(this.txtAppBasePath);
@@ -246,6 +331,8 @@
             this.Controls.Add(this.txtFileList);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCheckFileList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "应用程序发布工具";
@@ -277,6 +364,13 @@
         private System.Windows.Forms.TextBox txtAppBasePath;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkLabelViewFile;
+        private System.Windows.Forms.Button btnFormatFileList;
+        private System.Windows.Forms.TextBox txtZipDirName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.LinkLabel linkLabelTeacher;
+        private System.Windows.Forms.LinkLabel linkLabelStudent;
+        private System.Windows.Forms.Button btnMake;
     }
 }
 

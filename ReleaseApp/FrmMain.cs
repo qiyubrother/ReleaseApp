@@ -24,13 +24,14 @@ namespace ReleaseApp
             base.OnShown(e);
 
             txtReleasePath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            txtFileList.Text = @"d:\FileList.txt";
             txtAppBasePath.Text = @"D:\SVNRoot\src\Client\win\teacher\zntbkt\bin\Debug";
+
+            btnMake.PerformClick();
         }
 
         private void numericUpDownVer_ValueChanged(object sender, EventArgs e)
         {
-            txtReleaseFileName.Text = $"{txtReleasePath.Text}\\Teacher.{DateTime.Now.ToString("yyyyMMdd")}.v{numericUpDownVer.Value}.zip";
+            btnMake.PerformClick();
         }
 
         private void btnSelectDir_Click(object sender, EventArgs e)
@@ -70,9 +71,14 @@ namespace ReleaseApp
         private void btnRelease_Click(object sender, EventArgs e)
         {
             var lines = File.ReadAllLines(txtFileList.Text);
-            var tmpDirName = $@"{Application.StartupPath}\Teacher";
+            var tmpDirName = $@"{Application.StartupPath}\{txtZipDirName.Text}";
             if (!Directory.Exists(tmpDirName))
             {
+                Directory.CreateDirectory(tmpDirName);
+            }
+            else
+            {
+                Directory.Delete(tmpDirName, true);
                 Directory.CreateDirectory(tmpDirName);
             }
             foreach (var line in lines)
@@ -137,6 +143,48 @@ namespace ReleaseApp
         private void linkLabelGotoCurrentPath_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtAppBasePath.Text = Application.StartupPath;
+        }
+
+        private void linkLabelViewFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process.Start(txtFileList.Text);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnFormatFileList_Click(object sender, EventArgs e)
+        {
+            if (!Directory.Exists(txtAppBasePath.Text))
+            {
+                // 程序文件路径 无效
+                MessageBox.Show($"{label5.Text} 无效");
+            }
+            var lines = File.ReadAllLines(txtFileList.Text);
+            var lst = new List<string>();
+            foreach(var line in lines)
+            {
+                lst.Add(line.Replace($@"{txtAppBasePath.Text}\", string.Empty));
+            }
+            File.WriteAllLines(txtFileList.Text, lst);
+        }
+
+        private void linkLabelStudent_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtZipDirName.Text = "Student";
+        }
+
+        private void linkLabelTeacher_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtZipDirName.Text = "Teacher";
+        }
+
+        private void btnMake_Click(object sender, EventArgs e)
+        {
+            txtReleaseFileName.Text = $"{txtReleasePath.Text}\\{txtZipDirName.Text}.{DateTime.Now.ToString("yyyyMMdd")}.v{numericUpDownVer.Value}.zip";
         }
     }
 }
