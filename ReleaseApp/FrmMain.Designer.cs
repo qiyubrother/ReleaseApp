@@ -56,15 +56,17 @@
             this.linkLabelTeacher = new System.Windows.Forms.LinkLabel();
             this.linkLabelStudent = new System.Windows.Forms.LinkLabel();
             this.btnMake = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPublishBackupDir = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCheckFileList
             // 
-            this.btnCheckFileList.Location = new System.Drawing.Point(12, 237);
+            this.btnCheckFileList.Location = new System.Drawing.Point(12, 291);
             this.btnCheckFileList.Name = "btnCheckFileList";
             this.btnCheckFileList.Size = new System.Drawing.Size(115, 23);
-            this.btnCheckFileList.TabIndex = 0;
+            this.btnCheckFileList.TabIndex = 4;
             this.btnCheckFileList.Text = "检查文件清单";
             this.btnCheckFileList.UseVisualStyleBackColor = true;
             this.btnCheckFileList.Click += new System.EventHandler(this.btnCheckFileList_Click);
@@ -75,7 +77,7 @@
             this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "文件清单";
             // 
             // txtFileList
@@ -83,13 +85,13 @@
             this.txtFileList.Location = new System.Drawing.Point(12, 28);
             this.txtFileList.Name = "txtFileList";
             this.txtFileList.Size = new System.Drawing.Size(389, 21);
-            this.txtFileList.TabIndex = 2;
+            this.txtFileList.TabIndex = 1;
             // 
             // btnRelease
             // 
-            this.btnRelease.Location = new System.Drawing.Point(12, 266);
+            this.btnRelease.Location = new System.Drawing.Point(12, 320);
             this.btnRelease.Name = "btnRelease";
-            this.btnRelease.Size = new System.Drawing.Size(115, 23);
+            this.btnRelease.Size = new System.Drawing.Size(456, 56);
             this.btnRelease.TabIndex = 3;
             this.btnRelease.Text = "发布";
             this.btnRelease.UseVisualStyleBackColor = true;
@@ -99,6 +101,7 @@
             // 
             this.txtReleaseFileName.Location = new System.Drawing.Point(12, 166);
             this.txtReleaseFileName.Name = "txtReleaseFileName";
+            this.txtReleaseFileName.ReadOnly = true;
             this.txtReleaseFileName.Size = new System.Drawing.Size(326, 21);
             this.txtReleaseFileName.TabIndex = 5;
             // 
@@ -137,6 +140,7 @@
             // 
             this.txtReleasePath.Location = new System.Drawing.Point(12, 119);
             this.txtReleasePath.Name = "txtReleasePath";
+            this.txtReleasePath.ReadOnly = true;
             this.txtReleasePath.Size = new System.Drawing.Size(389, 21);
             this.txtReleasePath.TabIndex = 9;
             // 
@@ -186,7 +190,7 @@
             this.btnSelectFile.Location = new System.Drawing.Point(407, 28);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(59, 23);
-            this.btnSelectFile.TabIndex = 13;
+            this.btnSelectFile.TabIndex = 2;
             this.btnSelectFile.Text = "选择...";
             this.btnSelectFile.UseVisualStyleBackColor = true;
             this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
@@ -210,6 +214,7 @@
             // 
             this.txtAppBasePath.Location = new System.Drawing.Point(12, 74);
             this.txtAppBasePath.Name = "txtAppBasePath";
+            this.txtAppBasePath.ReadOnly = true;
             this.txtAppBasePath.Size = new System.Drawing.Size(389, 21);
             this.txtAppBasePath.TabIndex = 15;
             // 
@@ -244,10 +249,10 @@
             // 
             // btnFormatFileList
             // 
-            this.btnFormatFileList.Location = new System.Drawing.Point(133, 237);
+            this.btnFormatFileList.Location = new System.Drawing.Point(133, 291);
             this.btnFormatFileList.Name = "btnFormatFileList";
             this.btnFormatFileList.Size = new System.Drawing.Size(335, 23);
-            this.btnFormatFileList.TabIndex = 20;
+            this.btnFormatFileList.TabIndex = 5;
             this.btnFormatFileList.Text = "格式化文件清单内文件路径转为相对路径";
             this.btnFormatFileList.UseVisualStyleBackColor = true;
             this.btnFormatFileList.Click += new System.EventHandler(this.btnFormatFileList_Click);
@@ -256,7 +261,8 @@
             // 
             this.txtZipDirName.Location = new System.Drawing.Point(12, 210);
             this.txtZipDirName.Name = "txtZipDirName";
-            this.txtZipDirName.Size = new System.Drawing.Size(456, 21);
+            this.txtZipDirName.ReadOnly = true;
+            this.txtZipDirName.Size = new System.Drawing.Size(454, 21);
             this.txtZipDirName.TabIndex = 22;
             this.txtZipDirName.Text = "Teacher";
             // 
@@ -295,20 +301,40 @@
             // 
             this.btnMake.Location = new System.Drawing.Point(407, 163);
             this.btnMake.Name = "btnMake";
-            this.btnMake.Size = new System.Drawing.Size(59, 23);
+            this.btnMake.Size = new System.Drawing.Size(61, 23);
             this.btnMake.TabIndex = 25;
             this.btnMake.Text = "生成";
             this.btnMake.UseVisualStyleBackColor = true;
             this.btnMake.Click += new System.EventHandler(this.btnMake_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 239);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(149, 12);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "复制压缩包到发布管理目录";
+            // 
+            // txtPublishBackupDir
+            // 
+            this.txtPublishBackupDir.Location = new System.Drawing.Point(12, 254);
+            this.txtPublishBackupDir.Name = "txtPublishBackupDir";
+            this.txtPublishBackupDir.ReadOnly = true;
+            this.txtPublishBackupDir.Size = new System.Drawing.Size(454, 21);
+            this.txtPublishBackupDir.TabIndex = 22;
+            this.txtPublishBackupDir.Text = "D:\\PublishBackup\\Teacher";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 300);
+            this.ClientSize = new System.Drawing.Size(483, 392);
             this.Controls.Add(this.btnMake);
             this.Controls.Add(this.linkLabelTeacher);
             this.Controls.Add(this.linkLabelStudent);
+            this.Controls.Add(this.txtPublishBackupDir);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtZipDirName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnFormatFileList);
@@ -371,6 +397,8 @@
         private System.Windows.Forms.LinkLabel linkLabelTeacher;
         private System.Windows.Forms.LinkLabel linkLabelStudent;
         private System.Windows.Forms.Button btnMake;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtPublishBackupDir;
     }
 }
 

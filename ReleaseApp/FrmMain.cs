@@ -63,6 +63,11 @@ namespace ReleaseApp
 
         private void btnCheckFileList_Click(object sender, EventArgs e)
         {
+            if (txtFileList.Text == string.Empty || !File.Exists(txtFileList.Text))
+            {
+                MessageBox.Show("文件清单无效。");
+                return;
+            }
             var frm = new FrmCheckList();
             frm.FileListName = txtFileList.Text;
             frm.ShowDialog();
@@ -70,6 +75,11 @@ namespace ReleaseApp
 
         private void btnRelease_Click(object sender, EventArgs e)
         {
+            if (txtFileList.Text == string.Empty || !File.Exists(txtFileList.Text))
+            {
+                MessageBox.Show("文件清单无效。");
+                return;
+            }
             var lines = File.ReadAllLines(txtFileList.Text);
             var tmpDirName = $@"{Application.StartupPath}\{txtZipDirName.Text}";
             if (!Directory.Exists(tmpDirName))
@@ -95,6 +105,15 @@ namespace ReleaseApp
             var cmd = $"a -tzip {txtReleaseFileName.Text} -w {tmpDirName}";
             var p = Process.Start("7z.exe", cmd);
             p.WaitForExit();
+            if (!Directory.Exists(txtPublishBackupDir.Text))
+            {
+                Directory.CreateDirectory(txtPublishBackupDir.Text);
+            }
+            p.Dispose();
+            var fn = new FileInfo(txtReleaseFileName.Text).Name;
+            var sourceFile1 = Path.Combine(txtReleasePath.Text, fn);
+            var targetFile1 = Path.Combine(txtPublishBackupDir.Text, fn);
+            File.Copy(sourceFile1, targetFile1, true);
 
             /*
                         System.Diagnostics.Process p = new System.Diagnostics.Process();
@@ -149,6 +168,11 @@ namespace ReleaseApp
         {
             try
             {
+                if (txtFileList.Text == string.Empty || !File.Exists(txtFileList.Text))
+                {
+                    MessageBox.Show("文件清单无效。");
+                    return;
+                }
                 Process.Start(txtFileList.Text);
             }catch(Exception ex)
             {
@@ -158,6 +182,11 @@ namespace ReleaseApp
 
         private void btnFormatFileList_Click(object sender, EventArgs e)
         {
+            if (txtFileList.Text == string.Empty || !File.Exists(txtFileList.Text))
+            {
+                MessageBox.Show("文件清单无效。");
+                return;
+            }
             if (!Directory.Exists(txtAppBasePath.Text))
             {
                 // 程序文件路径 无效
@@ -175,11 +204,13 @@ namespace ReleaseApp
         private void linkLabelStudent_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtZipDirName.Text = "Student";
+            txtPublishBackupDir.Text = @"D:\PublishBackup\Student";
         }
 
         private void linkLabelTeacher_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtZipDirName.Text = "Teacher";
+            txtPublishBackupDir.Text = @"D:\PublishBackup\Teacher";
         }
 
         private void btnMake_Click(object sender, EventArgs e)
