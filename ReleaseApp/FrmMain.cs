@@ -25,6 +25,7 @@ namespace ReleaseApp
 
             txtReleasePath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             txtAppBasePath.Text = @"D:\SVNRoot\src\Client\win\teacher\zntbkt\bin\Debug";
+            txtFileList.Text = Path.Combine(Application.StartupPath, "Teacher.Standard.FileList.txt");
 
             btnMake.PerformClick();
         }
@@ -81,7 +82,7 @@ namespace ReleaseApp
                 return;
             }
             var lines = File.ReadAllLines(txtFileList.Text);
-            var tmpDirName = $@"{Application.StartupPath}\{txtZipDirName.Text}";
+            var tmpDirName = Path.Combine(Application.StartupPath, txtZipDirName.Text); //$@"{Application.StartupPath}\{txtZipDirName.Text}";
             if (!Directory.Exists(tmpDirName))
             {
                 Directory.CreateDirectory(tmpDirName);
@@ -113,7 +114,29 @@ namespace ReleaseApp
             var fn = new FileInfo(txtReleaseFileName.Text).Name;
             var sourceFile1 = Path.Combine(txtReleasePath.Text, fn);
             var targetFile1 = Path.Combine(txtPublishBackupDir.Text, fn);
-            File.Copy(sourceFile1, targetFile1, true);
+            var tryCnt = 0;
+            while (tryCnt < 3)
+            {
+                try
+                {
+                    System.Threading.Thread.Sleep(100);
+                    File.Copy(sourceFile1, targetFile1, true);
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    System.Threading.Thread.Sleep(300);
+                }
+                finally
+                {
+                    tryCnt++;
+                }
+            }
+            if (tryCnt >= 3)
+            {
+                MessageBox.Show("复制压缩文件到目标位置失败。");
+                return;
+            }
 
             /*
                         System.Diagnostics.Process p = new System.Diagnostics.Process();
@@ -216,6 +239,26 @@ namespace ReleaseApp
         private void btnMake_Click(object sender, EventArgs e)
         {
             txtReleaseFileName.Text = $"{txtReleasePath.Text}\\{txtZipDirName.Text}.{DateTime.Now.ToString("yyyyMMdd")}.v{numericUpDownVer.Value}.zip";
+        }
+
+        private void linkLabelC_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtReleasePath.Text = @"C:\";
+        }
+
+        private void linkLabelD_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtReleasePath.Text = @"D:\";
+        }
+
+        private void linkLabelE_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtReleasePath.Text = @"E:\";
+        }
+
+        private void linkLabelF_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtReleasePath.Text = @"F:\";
         }
     }
 }

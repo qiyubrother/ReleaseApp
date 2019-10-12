@@ -58,6 +58,10 @@
             this.btnMake = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPublishBackupDir = new System.Windows.Forms.TextBox();
+            this.linkLabelC = new System.Windows.Forms.LinkLabel();
+            this.linkLabelD = new System.Windows.Forms.LinkLabel();
+            this.linkLabelE = new System.Windows.Forms.LinkLabel();
+            this.linkLabelF = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +129,11 @@
             this.numericUpDownVer.Name = "numericUpDownVer";
             this.numericUpDownVer.Size = new System.Drawing.Size(57, 21);
             this.numericUpDownVer.TabIndex = 6;
+            this.numericUpDownVer.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownVer.ValueChanged += new System.EventHandler(this.numericUpDownVer_ValueChanged);
             // 
             // label3
@@ -325,11 +334,59 @@
             this.txtPublishBackupDir.TabIndex = 22;
             this.txtPublishBackupDir.Text = "D:\\PublishBackup\\Teacher";
             // 
+            // linkLabelC
+            // 
+            this.linkLabelC.AutoSize = true;
+            this.linkLabelC.Location = new System.Drawing.Point(199, 104);
+            this.linkLabelC.Name = "linkLabelC";
+            this.linkLabelC.Size = new System.Drawing.Size(23, 12);
+            this.linkLabelC.TabIndex = 26;
+            this.linkLabelC.TabStop = true;
+            this.linkLabelC.Text = "C:\\";
+            this.linkLabelC.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelC_LinkClicked);
+            // 
+            // linkLabelD
+            // 
+            this.linkLabelD.AutoSize = true;
+            this.linkLabelD.Location = new System.Drawing.Point(228, 104);
+            this.linkLabelD.Name = "linkLabelD";
+            this.linkLabelD.Size = new System.Drawing.Size(23, 12);
+            this.linkLabelD.TabIndex = 27;
+            this.linkLabelD.TabStop = true;
+            this.linkLabelD.Text = "D:\\";
+            this.linkLabelD.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelD_LinkClicked);
+            // 
+            // linkLabelE
+            // 
+            this.linkLabelE.AutoSize = true;
+            this.linkLabelE.Location = new System.Drawing.Point(257, 104);
+            this.linkLabelE.Name = "linkLabelE";
+            this.linkLabelE.Size = new System.Drawing.Size(23, 12);
+            this.linkLabelE.TabIndex = 28;
+            this.linkLabelE.TabStop = true;
+            this.linkLabelE.Text = "E:\\";
+            this.linkLabelE.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelE_LinkClicked);
+            // 
+            // linkLabelF
+            // 
+            this.linkLabelF.AutoSize = true;
+            this.linkLabelF.Location = new System.Drawing.Point(286, 104);
+            this.linkLabelF.Name = "linkLabelF";
+            this.linkLabelF.Size = new System.Drawing.Size(23, 12);
+            this.linkLabelF.TabIndex = 29;
+            this.linkLabelF.TabStop = true;
+            this.linkLabelF.Text = "F:\\";
+            this.linkLabelF.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelF_LinkClicked);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 392);
+            this.Controls.Add(this.linkLabelF);
+            this.Controls.Add(this.linkLabelE);
+            this.Controls.Add(this.linkLabelD);
+            this.Controls.Add(this.linkLabelC);
             this.Controls.Add(this.btnMake);
             this.Controls.Add(this.linkLabelTeacher);
             this.Controls.Add(this.linkLabelStudent);
@@ -399,6 +456,10 @@
         private System.Windows.Forms.Button btnMake;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPublishBackupDir;
+        private System.Windows.Forms.LinkLabel linkLabelC;
+        private System.Windows.Forms.LinkLabel linkLabelD;
+        private System.Windows.Forms.LinkLabel linkLabelE;
+        private System.Windows.Forms.LinkLabel linkLabelF;
     }
 }
 
