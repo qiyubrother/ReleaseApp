@@ -103,6 +103,7 @@ namespace ReleaseApp
                 }
                 File.Copy(sourceFile, targetFile, true);
             }
+            txtReleaseFileName.Text = txtReleaseFileName.Text.TrimEnd(new []{'\\'});
             var cmd = $"a -tzip {txtReleaseFileName.Text} -w {tmpDirName}";
             var p = Process.Start("7z.exe", cmd);
             p.WaitForExit();
@@ -241,24 +242,68 @@ namespace ReleaseApp
             txtReleaseFileName.Text = $"{txtReleasePath.Text}\\{txtZipDirName.Text}.{DateTime.Now.ToString("yyyyMMdd")}.v{numericUpDownVer.Value}.zip";
         }
 
-        private void linkLabelC_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnC_Click(object sender, EventArgs e)
         {
-            txtReleasePath.Text = @"C:\";
+            try
+            {
+                var fn = new FileInfo(txtReleaseFileName.Text).Name;
+                var sourceFile1 = Path.Combine(txtReleasePath.Text, fn);
+                var targetFile1 = Path.Combine(@"C:\", fn);
+
+                File.Copy(sourceFile1, targetFile1, true);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void linkLabelD_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnD_Click(object sender, EventArgs e)
         {
-            txtReleasePath.Text = @"D:\";
+            try
+            {
+                var fn = new FileInfo(txtReleaseFileName.Text).Name;
+                var sourceFile1 = Path.Combine(txtReleasePath.Text, fn);
+                var targetFile1 = Path.Combine(@"D:\", fn);
+
+                File.Copy(sourceFile1, targetFile1, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void linkLabelE_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnE_Click(object sender, EventArgs e)
         {
-            txtReleasePath.Text = @"E:\";
+            try
+            {
+                var fn = new FileInfo(txtReleaseFileName.Text).Name;
+                var sourceFile1 = Path.Combine(txtReleasePath.Text, fn);
+                var targetFile1 = Path.Combine(@"D:\", fn);
+
+                File.Copy(sourceFile1, targetFile1, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void linkLabelF_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnF_Click(object sender, EventArgs e)
         {
-            txtReleasePath.Text = @"F:\";
+            try
+            {
+                var fn = new FileInfo(txtReleaseFileName.Text).Name;
+                var sourceFile1 = Path.Combine(txtReleasePath.Text, fn);
+                var targetFile1 = Path.Combine(@"F:\", fn);
+
+                File.Copy(sourceFile1, targetFile1, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
